@@ -1,0 +1,34 @@
+{
+  "name": "cognito-jackpot",
+  "version": "0.0.1",
+  "description": "Yet another simple tool to manipulate your Amazon Cognito user pools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ouadie-lahdioui/cognito-jackpot.git"
+  },
+  "keywords": [
+    "amazon-cognito",
+    "aws-cognito",
+    "aws",
+    "user-pool",
+    "cognito-identity",
+    "aws-sdk",
+    "mfa",
+    "javascript-sdk",
+    "identity-pool",
+    "javascript",
+    "authentication-flow"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ouadie-lahdioui/cognito-jackpot/issues"
+  },
+  "homepage": "https://github.com/ouadie-lahdioui/cognito-jackpot#readme",
+  "devDependencies": {
+    "lerna": "^2.9.0"
+  }
+}
