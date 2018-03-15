@@ -6,4 +6,5 @@ npm start
 
 swagger project start
 swagger project edit
+swagger validate swagger.yam
 

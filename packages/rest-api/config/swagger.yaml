@@ -1,8 +1,8 @@
 swagger: "2.0"
 info:
   version: "0.0.1"
-  title: Hello World App
-host: localhost:10010
+  title: Yet another simple tool to manipulate your Amazon Cognito user pools
+host: localhost:8080
 basePath: /
 schemes:
   - http
@@ -12,22 +12,37 @@ consumes:
 produces:
   - application/json
 paths:
-  /hello:
-    x-swagger-router-controller: hello_world
+  /token/{userPoolId}/{clientId}:
+    x-swagger-router-controller: token
     get:
-      description: Returns 'Hello' to the caller
-      operationId: hello
+      description: Get a Cognito id token
+      operationId: get_id_token
       parameters:
-        - name: name
+        - name: userPoolId
+          in: path
+          description: The user pool Id
+          required: true
+          type: string
+        - name: clientId
+          in: path
+          description: The client Id
+          required: true
+          type: string
+        - name: user
           in: query
-          description: The name of the person to whom to say hello
-          required: false
+          description: The user name
+          required: true
+          type: string
+        - name: password
+          in: query
+          description: The password
+          required: true
           type: string
       responses:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/HelloWorldResponse"
+            $ref: "#/definitions/tokenResponse"
         default:
           description: Error
           schema:
@@ -35,7 +50,7 @@ paths:
   /swagger:
     x-swagger-pipe: swagger_raw
 definitions:
-  HelloWorldResponse:
+  tokenResponse:
     required:
       - message
     properties:

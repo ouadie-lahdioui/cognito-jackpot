@@ -9,7 +9,9 @@
   "main": "app.js",
   "dependencies": {
     "express": "^4.12.3",
-    "swagger-express-mw": "^0.1.0"
+    "swagger-express-mw": "^0.1.0",
+    "amazon-cognito-identity-js": "^1.2.0",
+    "aws-sdk": "^2.5.5"
   },
   "devDependencies": {
     "should": "^7.1.0",

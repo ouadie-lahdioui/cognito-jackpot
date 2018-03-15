@@ -1,26 +1,21 @@
 const SwaggerExpress = require('swagger-express-mw');
 const app = require('express')();
 
-module.exports = app; // for testing
-
 const config = {
     appRoot: __dirname,
     swaggerFile: `${__dirname}/config/swagger.yaml`
 };
 
-SwaggerExpress.create(config, function (err, swaggerExpress) {
+SwaggerExpress.create(config, (err, swaggerExpress) => {
 
     if (err) {
         throw err;
     }
 
-    swaggerExpress.register(app);
-
     let port = process.env.PORT || 8080;
+    swaggerExpress.register(app);
     app.listen(port);
 
-    if (swaggerExpress.runner.swagger.paths['/hello']) {
-        console.log('try this:\ncurl http://127.0.0.1:' + port + '/hello?name=Scott');
-    }
+    console.log('Yo! Try this: curl http://127.0.0.1:' + port + '/token/eu-central-1_xXx/4bmoep5ndc_xXx?user=ironmen&password=nemnori');
 
 });
