@@ -1,7 +1,7 @@
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 
 module.exports = {
-    get_id_token: function token(req, res) {
+    post_change_password: (req, res) => {
 
         const CognitoUser = AmazonCognitoIdentity.CognitoUser;
         const CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
@@ -11,7 +11,8 @@ module.exports = {
         let ClientId = req.swagger.params.clientId.value;
 
         let Username = req.swagger.params.user.value;
-        let Password = req.swagger.params.password.value;
+        let Password = req.swagger.params.oldPassword.value;
+        let newPassword = req.swagger.params.newPassword.value;
 
         let poolData = {UserPoolId, ClientId};
         let Pool = new CognitoUserPool(poolData);
@@ -26,7 +27,12 @@ module.exports = {
         cognitoUser.authenticateUser(authenticationDetails, {
             onSuccess: function (result) {
                 console.log(">>> onSuccess <<<");
-                res.json(`Congratulation ! The id token for the user ${Username} is : ${result.idToken.jwtToken}`);
+                cognitoUser.changePassword(Password, newPassword, function (err, result) {
+                    if (err) console.log(err);
+                    console.log(result);
+                    res.json(`Congratulation ! You successfully changed the password for the user ${Username}`);
+                });
+
             },
             onFailure: function (err) {
                 console.log(">>> onFailure <<<");

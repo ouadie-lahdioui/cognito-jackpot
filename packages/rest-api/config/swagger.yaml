@@ -47,6 +47,46 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /changePassword/{userPoolId}/{clientId}:
+      x-swagger-router-controller: changePassword
+      get:
+        description: Get a Cognito id token
+        operationId: post_change_password
+        parameters:
+          - name: userPoolId
+            in: path
+            description: The user pool Id
+            required: true
+            type: string
+          - name: clientId
+            in: path
+            description: The client Id
+            required: true
+            type: string
+          - name: user
+            in: query
+            description: The user name
+            required: true
+            type: string
+          - name: oldPassword
+            in: query
+            description: The password
+            required: true
+            type: string
+          - name: newPassword
+            in: query
+            description: The password
+            required: true
+            type: string
+        responses:
+          "200":
+            description: Success
+            schema:
+              $ref: "#/definitions/tokenResponse"
+          default:
+            description: Error
+            schema:
+              $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 definitions:
