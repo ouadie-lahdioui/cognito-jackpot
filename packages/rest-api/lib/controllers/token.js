@@ -1,7 +1,7 @@
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 
 module.exports = {
-    get_id_token: function token(req, res) {
+    get_id_token: (req, res) => {
 
         const CognitoUser = AmazonCognitoIdentity.CognitoUser;
         const CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;

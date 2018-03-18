@@ -87,6 +87,46 @@ paths:
             description: Error
             schema:
               $ref: "#/definitions/ErrorResponse"
+  /user/{userPoolId}/{clientId}:
+    x-swagger-router-controller: user
+    put:
+      description: Get a Cognito id token
+      operationId: create
+      parameters:
+        - name: userPoolId
+          in: path
+          description: The user pool Id
+          required: true
+          type: string
+        - name: clientId
+          in: path
+          description: The client Id
+          required: true
+          type: string
+        - name: user
+          in: query
+          description: The user name
+          required: true
+          type: string
+        - name: password
+          in: query
+          description: The password
+          required: true
+          type: string
+        - name: email
+          in: query
+          description: The email
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/tokenResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 definitions:
