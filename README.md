@@ -16,3 +16,4 @@ npm install -g lerna
 # Documentation
 # Security contact
 # License
+cognito-jackpot is licensed under the MIT license.
