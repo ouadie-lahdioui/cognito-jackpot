@@ -1,7 +1,7 @@
 {
   "name": "cognito-jackpot",
   "version": "0.0.1",
-  "description": "Yet another simple tool to manipulate your Amazon Cognito user pools",
+  "description": "Yet another simple tool to friendly manipulate your Amazon Cognito user pools",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
