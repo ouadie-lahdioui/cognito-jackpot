@@ -23,10 +23,12 @@ module.exports = {
 
         let cognitoUser = new CognitoUser(userData);
 
+        res.setHeader('Access-Control-Allow-Origin', '*');
+
         cognitoUser.authenticateUser(authenticationDetails, {
             onSuccess: function (result) {
                 console.log(">>> onSuccess <<<");
-                res.json(`Congratulation ! The id token for the user ${Username} is : ${result.idToken.jwtToken}`);
+                res.json(result.idToken.jwtToken);
             },
             onFailure: function (err) {
                 console.log(">>> onFailure <<<");
