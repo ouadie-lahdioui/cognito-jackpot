@@ -8,7 +8,6 @@ module.exports = {
         const AuthenticationDetails = AmazonCognitoIdentity.AuthenticationDetails;
         const CognitoUserAttribute = AmazonCognitoIdentity.CognitoUserAttribute;
 
-
         let UserPoolId = req.swagger.params.userPoolId.value;
         let ClientId = req.swagger.params.clientId.value;
 

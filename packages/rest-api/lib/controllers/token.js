@@ -33,7 +33,7 @@ module.exports = {
             onFailure: function (err) {
                 console.log(">>> onFailure <<<");
                 console.log(err);
-                res.json(`Sorry ! There was an error with the user ${Username} : ${err.message}`);
+                res.json({message: err.message}, 402);
             },
             newPasswordRequired: function (userAttributes, requiredAttributes) {
                 console.log(">>> NewPasswordRequired <<<");

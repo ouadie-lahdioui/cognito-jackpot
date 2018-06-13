@@ -48,78 +48,21 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">
-            <img src="node_modules/patternfly/dist/img/brand.svg" alt="PatternFly Enterprise Application"/>
+            <img src="node_modules/patternfly/dist/img/brand.svg" alt="Cognito JackPot"/>
         </a>
     </div>
     <div class="collapse navbar-collapse navbar-collapse-1">
         <ul class="nav navbar-nav navbar-utility">
             <li>
-                <a href="#">Status</a>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="pficon pficon-user"></span>
-                    AWS User <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="#">Link</a>
-                    </li>
-                    <li>
-                        <a href="#">Another link</a>
-                    </li>
-                    <li>
-                        <a href="#">Something else here</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li class="dropdown-submenu">
-                        <a tabindex="-1" href="#">More options</a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Another link</a>
-                            </li>
-                            <li>
-                                <a href="#">Something else here</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li>
-                                <a href="#">Separated link</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">One more separated link</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">One more separated link</a>
-                    </li>
-                </ul>
+                <a href="https://github.com/ouadie-lahdioui/cognito-jackpot" target="_blank">Fork me on github</a>
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-primary">
-            <li>
-                <a href="#">First Link</a>
-            </li>
             <li class="active">
-                <a href="#">Another Link</a>
+                <a href="#">Generate token</a>
             </li>
             <li>
-                <a href="#">And Another</a>
-            </li>
-            <li>
-                <a href="#">As a General Rule</a>
-            </li>
-            <li>
-                <a href="#">Five to Seven Links</a>
-            </li>
-            <li>
-                <a href="#">Is Good</a>
+                <a href="#">Create user</a>
             </li>
         </ul>
     </div>
@@ -174,7 +117,7 @@
 
             <div class="col-xs-12 col-md-6">
 
-                <div class="alert alert-success">
+                <div class="alert alert-success" id="successZone">
                     <button class="btn btn-default pull-right" id="copy" type="submit">copy</button>
                     <span class="pficon pficon-ok"></span>
 
@@ -187,7 +130,7 @@
                         <span class="pficon pficon-close"></span>
                     </button>
                     <span class="pficon pficon-error-circle-o"></span>
-                    <strong>Hey there is a problem!</strong>
+                    <strong>Oops there is a problem !</strong>
                     <p id="error"></p>
                 </div>
 
@@ -202,7 +145,9 @@
                     <div class="card-pf-body">
 
                         <button class="btn btn-primary btn-lg" id="search" type="button">Search</button>
-                        <button class="btn btn-danger btn-lg" type="button">Clear</button>
+                        <button class="btn btn-default btn-lg" id="save" type="button">Save to local storage</button>
+                        <button class="btn btn-default btn-lg" id="load" type="button">Load from local storage</button>
+                        <button class="btn btn-danger btn-lg" id="clear" type="button">Clear</button>
 
                     </div>
                 </div>
