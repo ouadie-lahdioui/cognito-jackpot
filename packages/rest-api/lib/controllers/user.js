@@ -8,17 +8,17 @@ module.exports = {
         const AuthenticationDetails = AmazonCognitoIdentity.AuthenticationDetails;
         const CognitoUserAttribute = AmazonCognitoIdentity.CognitoUserAttribute;
 
+
         let UserPoolId = req.swagger.params.userPoolId.value;
         let ClientId = req.swagger.params.clientId.value;
 
-        let userName = req.swagger.params.user.value;
+        let Username = req.swagger.params.user.value;
         let password = req.swagger.params.password.value;
         let email = req.swagger.params.email.value;
 
         let poolData = {UserPoolId, ClientId};
         let Pool = new CognitoUserPool(poolData);
-
-        let userData = {userName, Pool};
+        let userData = {Username, Pool};
 
         let cognitoUser = new CognitoUser(userData);
 
@@ -28,12 +28,15 @@ module.exports = {
         let attributeList = [];
         attributeList.push(attributeEmail);
 
-        Pool.signUp(userName, password, attributeList, null, function (err, result) {
+        Pool.signUp(Username, password, attributeList, null, function (err, result) {
             if (err) {
-                return console.error(err);
+                console.error("==> onError");
+                res.json(err);
+            } else {
+                console.log(">>> onSuccess <<<");
+                cognitoUser = result.user;
+                res.json(cognitoUser.getUsername());
             }
-            cognitoUser = result.user;
-            console.log('user name is ' + cognitoUser.getUsername());
         });
     }
 };
