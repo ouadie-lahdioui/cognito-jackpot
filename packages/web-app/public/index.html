@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Patternfly Quickstart</title>
+
+    <!-- PatternFly Styles -->
+    <link rel="stylesheet" href="node_modules/patternfly/dist/css/patternfly.min.css">
+    <link rel="stylesheet" href="node_modules/patternfly/dist/css/patternfly-additions.min.css">
+
+    <!-- Bootstrap base + PatternFly extensions + Your styles -->
+    <!-- <link rel="stylesheet" href="css/mystyles.css"> -->
+
+    <!-- JS -->
+    <script src="node_modules/patternfly/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/patternfly/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/patternfly/dist/js/patternfly.min.js"></script>
+
+    <!-- C3, D3 - Charting Libraries -->
+    <script src="node_modules/patternfly/node_modules/d3/d3.min.js"></script>
+    <script src="node_modules/patternfly/node_modules/c3/c3.min.js"></script>
+
+    <script src="node_modules/patternfly/node_modules/jquery-match-height/dist/jquery.matchHeight-min.js"></script>
+
+    <script src="js/index.js"></script>
+
+    <script>
+        $(function () {
+            // matchHeight the contents of each .card-pf and then the .card-pf itself
+            $(".row-cards-pf > [class*='col'] > .card-pf .card-pf-title").matchHeight();
+            $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-body").matchHeight();
+            $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-footer").matchHeight();
+            $(".row-cards-pf > [class*='col'] > .card-pf").matchHeight();
+            // initialize tooltips
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
+</head>
+<body class="cards-pf">
+
+<nav class="navbar navbar-default navbar-pf" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            <img src="node_modules/patternfly/dist/img/brand.svg" alt="Cognito JackPot"/>
+        </a>
+    </div>
+    <div class="collapse navbar-collapse navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-utility">
+            <li>
+                <a href="https://github.com/ouadie-lahdioui/cognito-jackpot" target="_blank">Fork me on github</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-primary">
+            <li class="active">
+                <a href="#">Generate token</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid container-cards-pf">
+
+
+    <div id="generateTokenArea" class="row row-cards-pf">
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+
+                <div class="card-pf">
+                    <div class="card-pf-heading">
+                        <h2 class="card-pf-title">
+                            Generate cognito token
+                        </h2>
+                    </div>
+                    <div class="card-pf-body">
+
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="poolId">Pool Id</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="poolId" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="appClientId">App client id</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="appClientId" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="userName">User</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="userName" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="password">Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" id="password" class="form-control">
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-xs-12 col-md-6">
+
+                <div class="alert alert-success" id="successZone">
+                    <button class="btn btn-default pull-right" id="copy" type="submit">copy</button>
+                    <span class="pficon pficon-ok"></span>
+
+                    <strong>Here we are !</strong>
+                    <p id="result"></p>
+                </div>
+
+                <div class="alert alert-danger alert-dismissable" id="errorZone">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span class="pficon pficon-close"></span>
+                    </button>
+                    <span class="pficon pficon-error-circle-o"></span>
+                    <strong>Oops there is a problem !</strong>
+                    <p id="error"></p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+
+                <div class="card-pf">
+
+                    <div class="card-pf-body">
+
+                        <button class="btn btn-primary btn-lg" id="search" type="button">Search</button>
+                        <button class="btn btn-default btn-lg" id="save" type="button">Save to local storage</button>
+                        <button class="btn btn-default btn-lg" id="load" type="button">Load from local storage</button>
+                        <button class="btn btn-danger btn-lg" id="clear" type="button">Clear</button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+</html>
