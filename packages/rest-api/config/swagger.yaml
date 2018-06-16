@@ -13,13 +13,13 @@ produces:
   - application/json
 paths:
   /:
-      x-swagger-router-controller: index
-      get:
-        description: Base GET
-        operationId: get_base
-        responses:
-          "200":
-            description: Success
+    x-swagger-router-controller: index
+    get:
+      description: Base GET
+      operationId: get_base
+      responses:
+        "200":
+          description: Success
   /token/{userPoolId}/{clientId}:
     x-swagger-router-controller: token
     get:
