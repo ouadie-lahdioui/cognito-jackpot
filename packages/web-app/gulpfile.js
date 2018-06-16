@@ -1,5 +1,5 @@
-var gulp = require('gulp'),
-    uglify = require('gulp-uglify'),
+const gulp = require('gulp'),
+    uglify = require('gulp-uglify-es').default,
     less = require('gulp-less-sourcemap'),
     plumber = require('gulp-plumber'),
     browserSync = require('browser-sync'),
