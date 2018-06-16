@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
     "start:dev": "node_modules/.bin/gulp"
   },
   "author": "Andres Galante",
@@ -16,7 +17,9 @@
     "gulp-less": "^3.1.0",
     "gulp-less-sourcemap": "^1.4.3",
     "gulp-plumber": "^1.1.0",
-    "gulp-uglify": "^1.5.4"
+    "gulp-uglify": "^1.5.4",
+    "express": "^4.15.2",
+    "ejs": "^1.0.0"
   },
   "dependencies": {
     "gulp-uglify-es": "^1.0.4",
