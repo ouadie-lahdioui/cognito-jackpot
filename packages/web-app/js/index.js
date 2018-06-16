@@ -5,6 +5,7 @@ $(document).ready(function () {
     loadFromLocalStorage();
 
     $("#successZone").show();
+
     $("#errorZone").hide();
 
     $("#search").click(function () {
