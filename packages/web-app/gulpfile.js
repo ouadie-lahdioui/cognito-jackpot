@@ -5,12 +5,13 @@ const plumber = require('gulp-plumber');
 const browserSync = require('browser-sync');
 const reload = browserSync.reload;
 const path = require('path');
+const ejs = require("gulp-ejs");
 
 gulp.task('scripts', function(){
     gulp.src('js/*.js')
         .pipe(plumber())
         .pipe(uglify())
-        .pipe(gulp.dest("public/js"));
+        .pipe(gulp.dest("dist/js"));
 });
 
 gulp.task('less', function () {
@@ -24,15 +25,31 @@ gulp.task('less', function () {
             }
 
         }))
-        .pipe(gulp.dest('public/css'))
+        .pipe(gulp.dest('dist/css'))
         .pipe(reload({stream:true}));
 });
+
+gulp.task('ejs', function(){
+    gulp.src('views/**/*.ejs')
+        .pipe(plumber())
+        .pipe(ejs({ msg: 'Hello Gulp!'}, {}, { ext: '.html' }))
+        .pipe(gulp.dest('dist/views/'));
+});
+
+gulp.task('modules', function() {
+    let sources = [
+        './node_modules/patternfly/dist/css/patternfly.min.css'
+    ];
+    gulp.src( sources ).pipe(gulp.dest('./dist/modules/'));
+});
+
+gulp.task('copy-modules', ['modules']);
 
 // reload server
 gulp.task('browser-sync', function() {
     browserSync({
         server: {
-            baseDir: "./"
+            baseDir: "./dist/views/pages"
         }
     });
 });
@@ -44,10 +61,12 @@ gulp.task('bs-reload', function () {
 
 // watch for changes on files
 gulp.task('watch', function(){
+    gulp.watch('views/**/*.ejs', ['ejs']);
     gulp.watch('js/*.js', ['scripts']);
     gulp.watch('less/*.less', ['less']);
-    gulp.watch("*.html", ['bs-reload']);
+    gulp.watch("dist/views/**/*.html", ['bs-reload']);
 });
 
 // deploys
-gulp.task('default',  ['scripts', 'less','browser-sync','watch']);
+gulp.task('default',  ['scripts', 'less', 'ejs', 'modules', 'browser-sync','watch']);
+gulp.task('build',  ['scripts', 'less']);

@@ -6,7 +6,8 @@ const PORT = process.env.PORT || 8080;
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
+app.use('/patternfly', express.static(__dirname + '/node_modules/patternfly/'));
 
 app.set('views', path.join(__dirname, 'views'));
 
@@ -16,8 +17,11 @@ app.get('/', function (req, res) {
     res.render('pages/index');
 });
 
+/*
+
 app.get('/about', function (req, res) {
     res.render('pages/about');
 });
+*/
 
 app.listen(PORT, () => console.log(`> Listening on ${ PORT }`));
