@@ -1,20 +1,18 @@
-const gulp = require('gulp'),
-    uglify = require('gulp-uglify-es').default,
-    less = require('gulp-less-sourcemap'),
-    plumber = require('gulp-plumber'),
-    browserSync = require('browser-sync'),
-    reload = browserSync.reload,
-    path = require('path');
+const gulp = require('gulp');
+const uglify = require('gulp-uglify-es').default;
+const less = require('gulp-less-sourcemap');
+const plumber = require('gulp-plumber');
+const browserSync = require('browser-sync');
+const reload = browserSync.reload;
+const path = require('path');
 
-// Uglyfies js on to /js/minjs
 gulp.task('scripts', function(){
     gulp.src('js/*.js')
         .pipe(plumber())
         .pipe(uglify())
-        .pipe(gulp.dest("js/minjs"));
+        .pipe(gulp.dest("public/js"));
 });
 
-// Compiles less on to /css
 gulp.task('less', function () {
     gulp.src('less/**/*.less')
         .pipe(plumber())
@@ -26,7 +24,7 @@ gulp.task('less', function () {
             }
 
         }))
-        .pipe(gulp.dest('css'))
+        .pipe(gulp.dest('public/css'))
         .pipe(reload({stream:true}));
 });
 

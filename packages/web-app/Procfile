@@ -1,1 +1,1 @@
-web: npm http-server
+web: node packeges/web-app/server.js
