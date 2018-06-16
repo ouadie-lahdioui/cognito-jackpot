@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-    let restApiBaseUrl = process.env.REST_API_URL || 'http://127.0.0.1:8080';
 
     loadFromLocalStorage();
 
@@ -15,7 +14,10 @@ $(document).ready(function () {
         let userName = $("#userName").val();
         let password = $("#password").val();
 
-        let url = `${restApiBaseUrl}/token/${poolId}/${appClientId}?user=${userName}&password=${password}`;
+        let restApiBaseUrl = $("#restApiUrl").val();
+        let url = `${restApiBaseUrl}token/${poolId}/${appClientId}?user=${userName}&password=${password}`;
+        console.log(">>>>" + url);
+
 
         $.ajax({
             type: "GET",

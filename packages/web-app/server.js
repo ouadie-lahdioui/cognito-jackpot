@@ -14,7 +14,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
-    res.render('pages/index');
+    let restApiUrl = process.env.REST_API_URL || 'http://127.0.0.1:' + PORT;
+    res.render('pages/index', {restApiUrl});
 });
 
 /*
