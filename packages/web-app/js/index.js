@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-
     loadFromLocalStorage();
 
     $("#successZone").show();
@@ -11,6 +10,8 @@ $(document).ready(function () {
 
         if(isValidForm()) {
 
+            $('#cover-spin').show();
+
             let poolId = $("#poolId").val();
             let appClientId = $("#appClientId").val();
             let userName = $("#userName").val();
@@ -20,30 +21,23 @@ $(document).ready(function () {
             let url = `${restApiBaseUrl}token/${poolId}/${appClientId}?user=${userName}&password=${password}`;
             console.log(">>>>" + url);
 
-
             $.ajax({
                 type: "GET",
                 url,
                 dataType: 'json',
                 data: {},
                 error: (xhr, error) => {
-                    $("#successZone").hide();
-                    $("#errorZone").show();
-                    $("#error").text(xhr.responseJSON.message);
+                    showErrorMessage(xhr.responseJSON.message);
+                    $('#cover-spin').hide();
                 },
                 success: (token) => {
-                    $("#successZone").show();
-                    $("#errorZone").hide();
-                    $("#result").text(token);
+                    showSuccessMessage(token);
+                    $('#cover-spin').hide();
                 }
             });
 
         } else {
-
-            $("#successZone").hide();
-            $("#errorZone").show();
-            $("#error").text("Pool Id, App client id, User and Password are required.");
-
+            showErrorMessage("Pool Id, App client id, User and Password are required.");
         }
 
     });
@@ -62,14 +56,18 @@ $(document).ready(function () {
         localStorage.setItem('appClientId', appClientId);
         localStorage.setItem('userName', userName);
         localStorage.setItem('password', password);
+
+        showSuccessMessage("Successfully copied to your local storage");
     });
 
     $("#load").click(function () {
         loadFromLocalStorage();
+        showSuccessMessage("Successfully loaded from your local storage");
     });
 
     $("#clear").click(function () {
         clear();
+        showSuccessMessage("Successfully cleaned from your local storage");
     });
 
 });
@@ -103,5 +101,17 @@ function clear() {
 }
 
 function isValidForm() {
-    return $("#poolId").val() && $("#appClientId").val() && $("#userName").val("") && $("#password").val("");
+    return $("#poolId").val() && $("#appClientId").val() && $("#userName").val() && $("#password").val();
+}
+
+function showSuccessMessage(message) {
+    $("#successZone").show();
+    $("#errorZone").hide();
+    $("#result").text(message);
+}
+
+function showErrorMessage(message) {
+    $("#successZone").hide();
+    $("#errorZone").show();
+    $("#error").text(message);
 }
