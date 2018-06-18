@@ -9,32 +9,42 @@ $(document).ready(function () {
 
     $("#search").click(function () {
 
-        let poolId = $("#poolId").val();
-        let appClientId = $("#appClientId").val();
-        let userName = $("#userName").val();
-        let password = $("#password").val();
+        if(isValidForm()) {
 
-        let restApiBaseUrl = $("#restApiUrl").val();
-        let url = `${restApiBaseUrl}token/${poolId}/${appClientId}?user=${userName}&password=${password}`;
-        console.log(">>>>" + url);
+            let poolId = $("#poolId").val();
+            let appClientId = $("#appClientId").val();
+            let userName = $("#userName").val();
+            let password = $("#password").val();
+
+            let restApiBaseUrl = $("#restApiUrl").val();
+            let url = `${restApiBaseUrl}token/${poolId}/${appClientId}?user=${userName}&password=${password}`;
+            console.log(">>>>" + url);
 
 
-        $.ajax({
-            type: "GET",
-            url,
-            dataType: 'json',
-            data: {},
-            error: (xhr, error) => {
-                $("#successZone").hide();
-                $("#errorZone").show();
-                $("#error").text(xhr.responseJSON.message);
-            },
-            success: (token) => {
-                $("#successZone").show();
-                $("#errorZone").hide();
-                $("#result").text(token);
-            }
-        });
+            $.ajax({
+                type: "GET",
+                url,
+                dataType: 'json',
+                data: {},
+                error: (xhr, error) => {
+                    $("#successZone").hide();
+                    $("#errorZone").show();
+                    $("#error").text(xhr.responseJSON.message);
+                },
+                success: (token) => {
+                    $("#successZone").show();
+                    $("#errorZone").hide();
+                    $("#result").text(token);
+                }
+            });
+
+        } else {
+
+            $("#successZone").hide();
+            $("#errorZone").show();
+            $("#error").text("Pool Id, App client id, User and Password are required.");
+
+        }
 
     });
 
@@ -90,4 +100,8 @@ function clear() {
     $("#appClientId").val("");
     $("#userName").val("");
     $("#password").val("");
+}
+
+function isValidForm() {
+    return $("#poolId").val() && $("#appClientId").val() && $("#userName").val("") && $("#password").val("");
 }
