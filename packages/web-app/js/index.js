@@ -22,6 +22,7 @@ $(document).ready(function () {
                 (token) => {
                     showSuccessMessage(token);
                     $('#cover-spin').hide();
+                    $("#animatedArea").hide();
                 },
                 (xhr, error) => {
                     showErrorMessage(xhr.responseJSON.message);
@@ -60,7 +61,8 @@ $(document).ready(function () {
 
     $("#clear").click(function () {
         clear();
-        showSuccessMessage("Successfully cleaned from your local storage");
+        showSuccessMessage("Successfully cleaned up your local storage");
+        $("#animatedArea").show();
     });
 
 });

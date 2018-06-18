@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Cognito Jackpot</title>
+    <meta charset="utf-8">
+    <title>Cognito Jackpot</title>
 
-  <link rel="stylesheet" href="/patternfly/dist/css/patternfly.min.css">
-  <link rel="stylesheet" href="/patternfly/dist/css/patternfly-additions.min.css">
+    <link rel="stylesheet" href="/patternfly/dist/css/patternfly.min.css">
+    <link rel="stylesheet" href="/patternfly/dist/css/patternfly-additions.min.css">
 
-  <script src="/patternfly/node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="/patternfly/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="/patternfly/dist/js/patternfly.min.js"></script>
+    <script src="/patternfly/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/patternfly/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/patternfly/dist/js/patternfly.min.js"></script>
 
-  <script src="js/index.js"></script>
+    <script src="js/index.js"></script>
 
-  <link type="text/css" rel="stylesheet" href="/css/index.css">
+    <link type="text/css" rel="stylesheet" href="css/index.css">
 
-  <script>
-      $(function () {
-          // matchHeight the contents of each .card-pf and then the .card-pf itself
-          $(".row-cards-pf > [class*='col'] > .card-pf .card-pf-title").matchHeight();
-          $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-body").matchHeight();
-          $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-footer").matchHeight();
-          $(".row-cards-pf > [class*='col'] > .card-pf").matchHeight();
-          // initialize tooltips
-          $('[data-toggle="tooltip"]').tooltip();
-      });
-  </script>
+    <script>
+        $(function () {
+            // matchHeight the contents of each .card-pf and then the .card-pf itself
+            $(".row-cards-pf > [class*='col'] > .card-pf .card-pf-title").matchHeight();
+            $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-body").matchHeight();
+            $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-footer").matchHeight();
+            $(".row-cards-pf > [class*='col'] > .card-pf").matchHeight();
+            // initialize tooltips
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 
 </head>
 <body class="cards-pf">
@@ -33,124 +33,131 @@
 <input type="hidden" value="<%= restApiUrl %>" id="restApiUrl">
 
 <nav class="navbar navbar-default navbar-pf" role="navigation">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="/">
-      <img src="assets/brand.svg" alt="Cognito JackPot"/>
-    </a>
-  </div>
-  <div class="collapse navbar-collapse navbar-collapse-1">
-    <ul class="nav navbar-nav navbar-utility">
-      <li>
-        <!--<a href="https://github.com/ouadie-lahdioui/cognito-jackpot" target="_blank">Fork me on github</a>-->
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-primary">
-      <li class="active">
-        <a href="#">Generate token</a>
-      </li>
-    </ul>
-  </div>
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            <img src="assets/brand.svg" alt="Cognito JackPot"/>
+        </a>
+    </div>
+    <div class="collapse navbar-collapse navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-utility">
+            <li>
+                <!--<a href="https://github.com/ouadie-lahdioui/cognito-jackpot" target="_blank">Fork me on github</a>-->
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-primary">
+            <li class="active">
+                <a href="#">Generate token</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
-<a href="https://github.com/ouadie-lahdioui/cognito-jackpot">
-  <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" targe="_blank" alt="Fork me on GitHub">
+<a href="https://github.com/ouadie-lahdioui/cognito-jackpot" targe="_blank">
+    <img style="position: absolute; top: 0; right: 0; border: 0;"
+         src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
 </a>
 
 <div id="cover-spin"></div>
 
 <div class="container-fluid container-cards-pf">
 
-  <div id="generateTokenArea" class="row row-cards-pf">
+    <div id="generateTokenArea" class="row row-cards-pf">
 
-    <div class="row">
-      <div class="col-xs-12 col-md-6">
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
 
-        <div class="card-pf">
-          <div class="card-pf-heading">
-            <h2 class="card-pf-title">
-              Generate cognito token
-            </h2>
-          </div>
-          <div class="card-pf-body">
+                <div class="card-pf">
+                    <div class="card-pf-heading">
+                        <h2 class="card-pf-title">
+                            Generate cognito token
+                        </h2>
+                    </div>
+                    <div class="card-pf-body">
 
-            <form class="form-horizontal">
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="poolId">Pool Id</label>
-                <div class="col-sm-10">
-                  <input type="text" id="poolId" class="form-control" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="appClientId">App client id</label>
-                <div class="col-sm-10">
-                  <input type="text" id="appClientId" class="form-control" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="userName">User</label>
-                <div class="col-sm-10">
-                  <input type="text" id="userName" class="form-control" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="password">Password</label>
-                <div class="col-sm-10">
-                  <input type="password" id="password" class="form-control" required>
-                </div>
-              </div>
-            </form>
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="poolId">Pool Id</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="poolId" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="appClientId">App client id</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="appClientId" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="userName">User</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="userName" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="password">Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" id="password" class="form-control" required>
+                                </div>
+                            </div>
+                        </form>
 
-          </div>
+                        <br>
+                        <br>
+
+                        <div style="text-align:right">
+                            <button class="btn btn-primary btn-lg" id="search" type="button">Search</button>
+                            <button class="btn btn-default btn-lg" id="save" type="button">Save to local storage
+                            </button>
+                            <button class="btn btn-default btn-lg" id="load" type="button">Load from local storage
+                            </button>
+                            <button class="btn btn-danger btn-lg" id="clear" type="button">Clear</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-xs-12 col-md-6">
+
+                <div class="card-pf">
+
+                    <div class="card-pf-body">
+
+                        <div class="alert alert-success" id="successZone">
+                            <button class="btn btn-default pull-right" id="copy" type="submit">copy</button>
+                            <span class="pficon pficon-ok"></span>
+
+                            <strong>Here we are !</strong>
+                            <p id="result"></p>
+                        </div>
+
+                        <div class="alert alert-danger alert-dismissable" id="errorZone">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span class="pficon pficon-close"></span>
+                            </button>
+                            <span class="pficon pficon-error-circle-o"></span>
+                            <strong>Oops there is a problem !</strong>
+                            <p id="error"></p>
+                        </div>
+
+                        <div style="text-align:center" id="animatedArea">
+                            <img src="assets/img_1.gif" style="width: 28rem"/>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
         </div>
 
-      </div>
-
-      <div class="col-xs-12 col-md-6">
-
-        <div class="alert alert-success" id="successZone">
-          <button class="btn btn-default pull-right" id="copy" type="submit">copy</button>
-          <span class="pficon pficon-ok"></span>
-
-          <strong>Here we are !</strong>
-          <p id="result"></p>
-        </div>
-
-        <div class="alert alert-danger alert-dismissable" id="errorZone">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span class="pficon pficon-close"></span>
-          </button>
-          <span class="pficon pficon-error-circle-o"></span>
-          <strong>Oops there is a problem !</strong>
-          <p id="error"></p>
-        </div>
-
-      </div>
     </div>
-
-    <div class="row">
-      <div class="col-xs-12 col-md-6">
-
-        <div class="card-pf">
-
-          <div class="card-pf-body">
-
-            <button class="btn btn-primary btn-lg" id="search" type="button">Search</button>
-            <button class="btn btn-default btn-lg" id="save" type="button">Save to local storage</button>
-            <button class="btn btn-default btn-lg" id="load" type="button">Load from local storage</button>
-            <button class="btn btn-danger btn-lg" id="clear" type="button">Clear</button>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
 
 </div>
 
