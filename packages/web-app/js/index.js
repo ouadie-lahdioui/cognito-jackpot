@@ -6,35 +6,28 @@ $(document).ready(function () {
 
     $("#errorZone").hide();
 
+    // wakeup rest-api at startup
+    callRestApi(
+        (token) => {},
+        (xhr, error) => {}
+    );
+
     $("#search").click(function () {
 
-        if(isValidForm()) {
+        if (isValidForm()) {
 
             $('#cover-spin').show();
 
-            let poolId = $("#poolId").val();
-            let appClientId = $("#appClientId").val();
-            let userName = $("#userName").val();
-            let password = $("#password").val();
-
-            let restApiBaseUrl = $("#restApiUrl").val();
-            let url = `${restApiBaseUrl}token/${poolId}/${appClientId}?user=${userName}&password=${password}`;
-            console.log(">>>>" + url);
-
-            $.ajax({
-                type: "GET",
-                url,
-                dataType: 'json',
-                data: {},
-                error: (xhr, error) => {
-                    showErrorMessage(xhr.responseJSON.message);
-                    $('#cover-spin').hide();
-                },
-                success: (token) => {
+            callRestApi(
+                (token) => {
                     showSuccessMessage(token);
                     $('#cover-spin').hide();
+                },
+                (xhr, error) => {
+                    showErrorMessage(xhr.responseJSON.message);
+                    $('#cover-spin').hide();
                 }
-            });
+            );
 
         } else {
             showErrorMessage("Pool Id, App client id, User and Password are required.");
@@ -114,4 +107,23 @@ function showErrorMessage(message) {
     $("#successZone").hide();
     $("#errorZone").show();
     $("#error").text(message);
+}
+
+function callRestApi(onSuccess, onError) {
+    let poolId = $("#poolId").val();
+    let appClientId = $("#appClientId").val();
+    let userName = $("#userName").val();
+    let password = $("#password").val();
+
+    let restApiBaseUrl = $("#restApiUrl").val();
+    let url = `${restApiBaseUrl}token/${poolId}/${appClientId}?user=${userName}&password=${password}`;
+
+    $.ajax({
+        type: "GET",
+        url,
+        dataType: 'json',
+        data: {},
+        error: onError,
+        success: onSuccess
+    });
 }
