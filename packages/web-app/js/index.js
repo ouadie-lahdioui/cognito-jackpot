@@ -21,8 +21,8 @@ $(document).ready(function () {
             callRestApi(
                 (token) => {
                     showSuccessMessage(token);
-                    $('#cover-spin').hide();
                     $("#animatedArea").hide();
+                    $('#cover-spin').hide();
                 },
                 (xhr, error) => {
                     showErrorMessage(xhr.responseJSON.message);
