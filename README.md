@@ -1,6 +1,7 @@
 ## Amazon Cognito Jackpot 
 
-![cognito-jackpot](https://user-images.githubusercontent.com/2996203/41569298-c3a9cc1c-736a-11e8-988c-fb24c6254ab0.png)
+![cognitojackpot](https://user-images.githubusercontent.com/2996203/41569481-a7798df6-736b-11e8-85fd-a71fc2aab65c.jpg)
+
 
 npm install -g swagger
 npm install -g lerna
