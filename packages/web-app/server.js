@@ -17,10 +17,9 @@ app.get('/', function (req, res) {
     res.render('pages/index', {restApiUrl});
 });
 
-/*
-app.get('/about', function (req, res) {
-    res.render('pages/about');
+app.get('/createUser', function (req, res) {
+    let restApiUrl = process.env.REST_API_URL || '/';
+    res.render('pages/createUser', {restApiUrl});
 });
-*/
 
 app.listen(PORT, () => console.log(`> Listening on ${ PORT }`));
