@@ -128,6 +128,7 @@ function callRestApi(onSuccess, onError) {
         type: "PUT",
         url,
         dataType: 'json',
+        contentType: 'application/json',
         data: {},
         error: onError,
         success: onSuccess
