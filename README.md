@@ -49,8 +49,6 @@ npm start
 
 This will be start a web server on port 8080 : http://localhost:8080
 
-
-
 # Contributing :
 
 If you are interested in fixing issues and contributing directly to the code base, take a look at the [issue list](https://github.com/ouadie-lahdioui/cognito-jackpot/issues).
