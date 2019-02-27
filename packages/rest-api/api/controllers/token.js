@@ -28,7 +28,7 @@ module.exports = {
         cognitoUser.authenticateUser(authenticationDetails, {
             onSuccess: function (result) {
                 console.log(">>> onSuccess <<<");
-                res.json(result.idToken.jwtToken);
+                res.json(result);
             },
             onFailure: function (err) {
                 console.log(">>> onFailure <<<");

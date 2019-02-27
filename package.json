@@ -29,6 +29,6 @@
   },
   "homepage": "https://github.com/ouadie-lahdioui/cognito-jackpot#readme",
   "devDependencies": {
-    "lerna": "^2.9.0"
+    "lerna": "^3.13.1"
   }
 }

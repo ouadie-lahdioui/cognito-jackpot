@@ -102,7 +102,7 @@ function isValidForm() {
 function showSuccessMessage(message) {
     $("#successZone").show();
     $("#errorZone").hide();
-    $("#result").text(message);
+    $("#result").html(JSON.stringify(message, undefined, 2));
 }
 
 function showErrorMessage(message) {
